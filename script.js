@@ -1,315 +1,411 @@
-const starsContainer = document.getElementById('stars');
-for (let i = 0; i < 150; i++) {
-    const star = document.createElement('div');
-    star.className = 'star';
-    star.style.left = Math.random() * 100 + '%';
-    star.style.top = Math.random() * 100 + '%';
-    star.style.animationDelay = Math.random() * 3 + 's';
-    starsContainer.appendChild(star);
-}
-
-const nucleusParticles = document.getElementById('nucleusParticles');
-const particleColors = ['#3776AB', '#02569B', '#E34F26', '#1572B6', '#00ffff', '#ff00ff'];
-
-function createParticle() {
-    const particle = document.createElement('div');
-    particle.className = 'flying-particle';
-    const angle = Math.random() * Math.PI * 2;
-    const distance = 250 + Math.random() * 100;
-    particle.style.setProperty('--particle-color', particleColors[Math.floor(Math.random() * particleColors.length)]);
-    particle.style.setProperty('--start-x', Math.cos(angle) * distance + 'px');
-    particle.style.setProperty('--start-y', Math.sin(angle) * distance + 'px');
-    particle.style.animationDelay = Math.random() * 3 + 's';
-    particle.style.animationDuration = (2 + Math.random() * 2) + 's';
-    nucleusParticles.appendChild(particle);
-    setTimeout(() => particle.remove(), 5000);
-}
-setInterval(createParticle, 300);
-
-const projects = {
-    'Python': [
-        {
-            name: 'AI Models & LLMs',
-            description: 'Explored various AI models with focus on Large Language Models, experimenting with training and fine-tuning',
-            tech: ['Python', 'Transformers', 'PyTorch', 'Hugging Face'],
-            highlights: 'Hands-on experience with modern LLM architectures',
-            timeTaken: '3 months',
-            features: [
-                'Worked with pre-trained language models',
-                'Experimented with fine-tuning techniques',
-                'Built understanding of transformer architecture',
-                'Tested various prompt engineering strategies',
-                'Learned model evaluation and testing'
-            ],
-            outcome: 'Gained solid foundation in AI/ML concepts and practical experience with state-of-the-art language models.'
-        },
-        {
-            name: 'Pirate Maker 2D',
-            description: 'A Mario Maker-style level editor and platformer with a pirate theme, built entirely with Pygame',
-            tech: ['Python', 'Pygame', 'JSON', 'PIL'],
-            highlights: 'Custom physics engine, Level editor with 20+ objects',
-            timeTaken: '2 months',
-            features: [
-                'Drag-and-drop level editor',
-                'Custom physics and collision detection',
-                '20+ placeable objects and enemies',
-                'Save/load level functionality',
-                'Player movement and animations',
-                'Enemy AI patterns'
-            ],
-            outcome: 'Completed game with fully functional editor, learned game development fundamentals and pygame mechanics.'
-        },
-        {
-            name: 'Chessed It - Chess Platform',
-            description: 'Custom online chess platform with full rule implementation and real-time multiplayer',
-            tech: ['Python', 'Flask', 'Socket.io', 'SQLite'],
-            highlights: 'Full chess rules implementation, Real-time multiplayer',
-            timeTaken: '6 weeks',
-            features: [
-                'Complete chess rules and logic',
-                'Legal move validation',
-                'Check and checkmate detection',
-                'Real-time multiplayer via websockets',
-                'Move history and game replay',
-                'Drag-and-drop pieces'
-            ],
-            outcome: 'Fully functional chess game with working multiplayer, deep understanding of game logic and networking.'
-        },
-        {
-            name: 'Chitti 4.0 Chatbot',
-            description: 'Early learning project experimenting with conversational AI and NLP fundamentals',
-            tech: ['Python', 'NLTK', 'TensorFlow', 'Flask'],
-            highlights: 'Learning project - explored chatbot fundamentals',
-            timeTaken: '1 month',
-            features: [
-                'Basic intent recognition',
-                'Pattern matching responses',
-                'Simple conversation flow',
-                'Web interface for interaction',
-                'Tokenization and NLP basics'
-            ],
-            outcome: 'Taught me the real complexity of NLP and motivated deeper AI study.'
-        },
-        {
-            name: 'Library Management System',
-            description: 'Desktop app for managing library operations including book tracking, user management, and borrowing',
-            tech: ['Python', 'Tkinter', 'SQLite', 'Datetime'],
-            highlights: 'Full CRUD operations, User-friendly GUI',
-            timeTaken: '3 weeks',
-            features: [
-                'Book inventory management',
-                'User account system',
-                'Borrow and return tracking',
-                'Due date calculations and late fees',
-                'Search and filter functionality',
-                'Reports and statistics'
-            ],
-            outcome: 'Practical application demonstrating database management, GUI development, and real-world problem solving.'
-        }
-    ],
-    'Flutter': [
-        {
-            name: 'Jet Punk - Social Media Platform',
-            description: 'Full-featured cross-platform social media app with posts, real-time chat, profiles, and social interactions',
-            tech: ['Flutter', 'Dart', 'Firebase', 'Provider', 'WebSocket'],
-            highlights: 'Cross-platform (iOS, Android, Web), Real-time features',
-            timeTaken: '4 months',
-            features: [
-                'User authentication and profiles',
-                'Create and share posts with images',
-                'Real-time chat messaging',
-                'Like, comment, and share system',
-                'Follow/unfollow users',
-                'News feed with personalized content',
-                'Push notifications',
-                'Dark mode support'
-            ],
-            outcome: 'Fully functional social media app on multiple platforms. Gained deep understanding of Flutter, Firebase, and real-time architecture.'
-        }
-    ],
-    'HTML': [
-        {
-            name: 'Portfolio Website',
-            description: 'Personal portfolio website with semantic HTML structure and accessibility focus',
-            tech: ['HTML5', 'Semantic markup', 'Responsive design'],
-            highlights: 'Clean structure, Accessibility focused',
-            timeTaken: '1 week',
-            features: [
-                'Semantic HTML5 elements',
-                'Proper heading hierarchy',
-                'Accessible forms and navigation',
-                'SEO-optimized markup',
-                'Mobile-friendly structure',
-                'Project showcase section'
-            ],
-            outcome: 'Well-structured portfolio site that serves as foundation for styling and interactivity.'
-        },
-        {
-            name: 'Jet Punk Social Media (Frontend)',
-            description: 'HTML structure for Jet Punk social media platform with complex layouts and components',
-            tech: ['HTML5', 'Forms', 'Media elements', 'Canvas'],
-            highlights: 'Complex component structure, Form validation',
-            timeTaken: '2 weeks',
-            features: [
-                'Multi-page structure (feed, profile, chat, settings)',
-                'Complex form elements for posts and comments',
-                'Media upload interfaces',
-                'Modal dialogs and overlays',
-                'Navigation and routing structure',
-                'Accessible interactive elements'
-            ],
-            outcome: 'Solid HTML foundation that made styling and JavaScript integration much easier.'
-        }
-    ],
-    'CSS': [
-        {
-            name: 'Portfolio Website Animations',
-            description: 'Portfolio site featuring custom CSS animations and hover effects',
-            tech: ['CSS3', 'Animations', 'Transitions', 'Keyframes'],
-            highlights: 'Smooth hover effects, Custom animations',
-            timeTaken: '2 weeks',
-            features: [
-                'Hover animations on cards and buttons',
-                'Fade-in animations on scroll',
-                'Custom keyframe animations',
-                'Smooth transitions throughout',
-                'Animated navigation menu',
-                'Loading animations'
-            ],
-            outcome: 'Portfolio site with polished animations that taught me CSS animation fundamentals.'
-        },
-        {
-            name: 'Jet Punk Social Media (Styling)',
-            description: 'Complete CSS styling for Jet Punk with modern design, dark mode, and full responsiveness',
-            tech: ['CSS3', 'Flexbox', 'Grid', 'CSS Variables', 'Media Queries'],
-            highlights: 'Dark mode, Fully responsive, Modern UI',
-            timeTaken: '3 weeks',
-            features: [
-                'Modern, clean UI design',
-                'Dark and light mode with CSS variables',
-                'Fully responsive layout (mobile to desktop)',
-                'Custom styled form elements',
-                'Grid and flexbox layouts',
-                'Smooth transitions and micro-animations',
-                'Mobile-first approach'
-            ],
-            outcome: 'Professional-looking social media UI that works great on all devices. Mastered CSS layout techniques and theming.'
-        }
+const ADMIN_PASSWORD = "atomic123";
+const DEFAULT = {
+  general: {
+    name: "00_Atomic", line1: "Break &amp;", line2: "Build.",
+    label: "Developer · Nepal 🇳🇵",
+    sub: "I'm <strong>00_Atomic</strong> — a <strong>17-year-old developer</strong> from Nepal who loves making things. Python and Flutter are my core tools. I build apps, games, and whatever else sounds interesting.",
+    age: "17", location: "Kathmandu, NP", stack: "Python · Flutter", status: "● Building",
+    footer: "© 2026 · 00_Atomic · Break and Build", footerStatus: "Open to collabs"
+  },
+  about: {
+    p1: "Hey y'all! I'm a <strong>17-year-old dev</strong> from <strong>Nepal</strong> who genuinely loves to program and build stuff.",
+    p2: "I mainly use <strong>Python</strong> and <strong>Flutter</strong> as my core languages — whether that's scripting tools, building cross-platform apps, or making games from scratch.",
+    p3: "My whole thing: <span class='g'>break things apart</span>, figure out why they work, and put them back together better than before. That's the loop I'm always in.",
+    p4: "Still young, still learning — but the projects don't stop.",
+    card: {
+      name: "00_Atomic", age: "17", location: "Nepal 🇳🇵",
+      primary: "Python · Flutter", interests: "Games · Apps · Tools", mantra: "Break and Build"
+    }
+  },
+  skills: [
+    { icon: "🐍", name: "Python",           sub: "Core Language"   },
+    { icon: "🐦", name: "Flutter",          sub: "Core Framework"  },
+    { icon: "🎯", name: "Dart",             sub: "Flutter Language" },
+    { icon: "🎮", name: "Game Dev",         sub: "2D · Indie"       },
+    { icon: "📱", name: "App Dev",          sub: "Cross-Platform"  },
+    { icon: "🔧", name: "Problem Solving",  sub: "Always On"       }
+  ],
+  projects: [
+    {
+      name: "PirateMaker2D",
+      desc: "A Mario Maker–style 2D platformer with a full level editor, tile sets, and multiple enemy types. Build levels, test them, play them. Cross-platform.",
+      tags: "Game Dev, 2D, Level Editor, Cross-platform",
+      link: "https://atomic-dev-123.itch.io/piratemaker2d",
+      linkLabel: "itch.io ↗"
+    },
+    {
+      name: "Pong Game",
+      desc: "A clean, faithful recreation of the classic Pong arcade game. Tight, minimal, built from scratch.",
+      tags: "Game Dev, Arcade, Classic",
+      link: "https://atomic-dev-123.itch.io/pong-game",
+      linkLabel: "itch.io ↗"
+    },
+    {
+      name: "More on GitHub",
+      desc: "Experiments, tools, and works-in-progress. The raw stuff — always being broken apart and rebuilt.",
+      tags: "Python, Flutter, Open Source",
+      link: "https://github.com/diamondacharya-design",
+      linkLabel: "GitHub ↗"
+    }
+  ],
+  contact: {
+    h1: "Got an idea?",
+    h2: "Let's <span>build</span> it.",
+    note: "I'm open to collaborations, projects, and just general chat about code and games. Reach out anywhere below.",
+    links: [
+      { platform: "Email",   handle: "diamond.acharya@sifal.deerwalk.edu.np", url: "mailto:diamond.acharya@sifal.deerwalk.edu.np" },
+      { platform: "GitHub",  handle: "diamondacharya-design",                  url: "https://github.com/diamondacharya-design"      },
+      { platform: "itch.io", handle: "atomic-dev-123",                         url: "https://atomic-dev-123.itch.io/"               }
     ]
+  }
 };
 
-let currentTech = '';
-
-function showPersonalInfo() {
-    document.getElementById('personalModal').classList.add('active');
+// ── LOAD / SAVE DATA ──
+function loadData() {
+  try {
+    const saved = localStorage.getItem('atomic_portfolio');
+    return saved ? JSON.parse(saved) : JSON.parse(JSON.stringify(DEFAULT));
+  } catch {
+    return JSON.parse(JSON.stringify(DEFAULT));
+  }
+}
+function saveData(d) {
+  localStorage.setItem('atomic_portfolio', JSON.stringify(d));
 }
 
-function showProjects(tech) {
-    currentTech = tech;
-    const modal = document.getElementById('projectsModal');
-    const projectsList = document.getElementById('projectsList');
-    const projectDetail = document.getElementById('projectDetail');
-    const terminalTitle = document.getElementById('terminalTitle');
+let DATA = loadData();
 
-    const colors = { 'Python': '#3776AB', 'Flutter': '#02569B', 'HTML': '#E34F26', 'CSS': '#1572B6' };
-    modal.style.setProperty('--modal-glow', colors[tech]);
-    terminalTitle.textContent = `${tech.toUpperCase()}_PROJECTS.db`;
+// ── RENDER PORTFOLIO ──
+function render() {
+  const g = DATA.general, ab = DATA.about, con = DATA.contact;
 
-    let html = '<div style="margin-bottom: 2rem;">';
-    html += `<div style="color: ${colors[tech]}; font-size: 1.1rem; margin-bottom: 1rem; text-shadow: 0 0 10px ${colors[tech]};">> LOADING ${tech.toUpperCase()} PROJECTS...</div>`;
-    html += `<div style="height: 2px; background: linear-gradient(to right, transparent, ${colors[tech]}, transparent); margin-bottom: 2rem;"></div>`;
-    html += '</div>';
+  // Nav + hero
+  document.getElementById('nav-logo').innerHTML = `<span>${g.name.split('_')[0]}</span>_${g.name.split('_')[1] || ''}`;
+  document.getElementById('hero-label').textContent = g.label;
+  document.getElementById('hero-line1').innerHTML = g.line1;
+  document.getElementById('hero-line2').innerHTML = g.line2;
+  document.getElementById('hero-sub').innerHTML = g.sub;
 
-    projects[tech].forEach((project, index) => {
-        html += `
-            <div class="project-item" onclick="showProjectDetail(${index})">
-                <div class="project-item-header">
-                    <h3>[${String(index + 1).padStart(2, '0')}] ${project.name}</h3>
-                    <span class="project-time">${project.timeTaken}</span>
-                </div>
-                <p>${project.description}</p>
-                <div class="project-tags">
-                    ${project.tech.map(t => `<span class="tech-tag">${t}</span>`).join('')}
-                </div>
-                <p style="margin-top: 0.8rem; color: #ff00ff; font-weight: 700;">▸ ${project.highlights}</p>
-            </div>
-        `;
-    });
+  // Meta bar
+  document.getElementById('hero-meta').innerHTML = `
+    <div class="meta-item"><div class="meta-k">Age</div><div class="meta-v">${g.age}</div></div>
+    <div class="meta-item"><div class="meta-k">Location</div><div class="meta-v">${g.location}</div></div>
+    <div class="meta-item"><div class="meta-k">Stack</div><div class="meta-v">${g.stack}</div></div>
+    <div class="meta-item"><div class="meta-k">Status</div><div class="meta-v live">${g.status}</div></div>
+  `;
 
-    projectsList.innerHTML = html;
-    projectsList.style.display = 'block';
-    projectDetail.style.display = 'none';
-    modal.classList.add('active');
-}
+  // About
+  document.getElementById('about-text').innerHTML =
+    [ab.p1, ab.p2, ab.p3, ab.p4].filter(Boolean).map(p => `<p>${p}</p>`).join('');
+  const c = ab.card;
+  document.getElementById('about-card').innerHTML = `
+    <div class="card-row"><span class="card-key">name</span><span class="card-val">${c.name}</span></div>
+    <div class="card-row"><span class="card-key">age</span><span class="card-val">${c.age}</span></div>
+    <div class="card-row"><span class="card-key">location</span><span class="card-val">${c.location}</span></div>
+    <div class="card-row"><span class="card-key">primary</span><span class="card-val">${c.primary}</span></div>
+    <div class="card-row"><span class="card-key">interests</span><span class="card-val">${c.interests}</span></div>
+    <div class="card-row"><span class="card-key">mantra</span><span class="card-val g">${c.mantra}</span></div>
+  `;
 
-function showProjectDetail(index) {
-    const projectsList = document.getElementById('projectsList');
-    const projectDetail = document.getElementById('projectDetail');
-    const projectDetailContent = document.getElementById('projectDetailContent');
+  // Skills
+  document.getElementById('skills-grid').innerHTML = DATA.skills.map(s => `
+    <div class="skill-item">
+      <div class="skill-icon">${s.icon}</div>
+      <div class="skill-name">${s.name}</div>
+      <div class="skill-sub">${s.sub}</div>
+    </div>
+  `).join('');
 
-    const project = projects[currentTech][index];
-    const colors = { 'Python': '#3776AB', 'Flutter': '#02569B', 'HTML': '#E34F26', 'CSS': '#1572B6' };
-
-    const html = `
-        <div class="detail-header">
-            <h2>${project.name}</h2>
-            <div class="detail-meta">
-                <div class="meta-item">
-                    <span class="meta-label">Time Taken</span>
-                    <span class="meta-value">${project.timeTaken}</span>
-                </div>
-                <div class="meta-item">
-                    <span class="meta-label">Status</span>
-                    <span class="meta-value">COMPLETED</span>
-                </div>
-                <div class="meta-item">
-                    <span class="meta-label">Language</span>
-                    <span class="meta-value" style="color: ${colors[currentTech]}; text-shadow: 0 0 10px ${colors[currentTech]};">${currentTech}</span>
-                </div>
-            </div>
-            <div class="project-tags">
-                ${project.tech.map(t => `<span class="tech-tag">${t}</span>`).join('')}
-            </div>
+  // Projects
+  document.getElementById('projects-list').innerHTML = DATA.projects.map((p, i) => `
+    <div class="project">
+      <div>
+        <div class="proj-top">
+          <span class="proj-num">0${i + 1}</span>
+          <span class="proj-name">${p.name}</span>
         </div>
+        <div class="proj-desc">${p.desc}</div>
+        <div class="proj-tags">${p.tags.split(',').map(t => `<span class="proj-tag">${t.trim()}</span>`).join('')}</div>
+      </div>
+      <a href="${p.link}" target="_blank" class="proj-link">${p.linkLabel}</a>
+    </div>
+  `).join('');
 
-        <div class="detail-section">
-            <h3>Features</h3>
-            <ul>${project.features.map(f => `<li>${f}</li>`).join('')}</ul>
-        </div>
+  // Contact
+  document.getElementById('contact-headline').innerHTML = `${con.h1}<br>${con.h2}`;
+  document.getElementById('contact-note').textContent = con.note;
+  document.getElementById('contact-links').innerHTML = con.links.map(l => `
+    <a href="${l.url}" target="_blank" class="contact-link">
+      <span class="cl-platform">${l.platform}</span>
+      <span class="cl-handle">${l.handle}</span>
+      <span class="cl-arrow">↗</span>
+    </a>
+  `).join('');
 
-        <div class="detail-section">
-            <h3>Outcome</h3>
-            <p>${project.outcome}</p>
-        </div>
-
-        <div style="margin-top: 2rem; padding: 1.5rem; background: rgba(0,255,136,0.05); border: 1px solid rgba(0,255,136,0.3); border-radius: 8px;">
-            <div style="color: #ff00ff; font-weight: 700; margin-bottom: 0.5rem;">Highlights</div>
-            <div style="color: #00ff88; font-size: 1.1rem;">${project.highlights}</div>
-        </div>
-    `;
-
-    projectDetailContent.innerHTML = html;
-    projectsList.style.display = 'none';
-    projectDetail.style.display = 'block';
+  // Footer
+  document.getElementById('footer-copy').textContent = g.footer;
+  document.getElementById('footer-status').textContent = g.footerStatus;
 }
 
-function backToProjects() {
-    document.getElementById('projectsList').style.display = 'block';
-    document.getElementById('projectDetail').style.display = 'none';
+// ── ADMIN ──
+function openAdmin() {
+  document.getElementById('admin-overlay').classList.add('show');
+  document.getElementById('login-box').style.display = 'block';
+  document.getElementById('admin-panel').style.display = 'none';
+  document.getElementById('pw-input').value = '';
+  document.getElementById('login-err').textContent = '';
+  setTimeout(() => document.getElementById('pw-input').focus(), 100);
 }
 
-function closeModal(modalId) {
-    document.getElementById(modalId).classList.remove('active');
+function closeAdmin() {
+  document.getElementById('admin-overlay').classList.remove('show');
 }
 
-document.querySelectorAll('.modal').forEach(modal => {
-    modal.addEventListener('click', e => {
-        if (e.target === modal) modal.classList.remove('active');
-    });
-});
+function doLogin() {
+  if (document.getElementById('pw-input').value === ADMIN_PASSWORD) {
+    document.getElementById('login-box').style.display = 'none';
+    document.getElementById('admin-panel').style.display = 'flex';
+    populateAdmin();
+    updateFilesAdminUI();
+  } else {
+    document.getElementById('login-err').textContent = '✕ Incorrect password';
+    document.getElementById('pw-input').value = '';
+    document.getElementById('pw-input').focus();
+  }
+}
 
-document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') {
-        document.querySelectorAll('.modal').forEach(m => m.classList.remove('active'));
+function switchTab(name, el) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-pane').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('tab-' + name).classList.add('active');
+}
+
+function populateAdmin() {
+  const g = DATA.general, ab = DATA.about, con = DATA.contact;
+
+  // General
+  document.getElementById('g-name').value         = g.name;
+  document.getElementById('g-line1').value        = g.line1.replace(/&amp;/g, '&');
+  document.getElementById('g-line2').value        = g.line2;
+  document.getElementById('g-label').value        = g.label;
+  document.getElementById('g-sub').value          = g.sub;
+  document.getElementById('g-age').value          = g.age;
+  document.getElementById('g-location').value     = g.location;
+  document.getElementById('g-stack').value        = g.stack;
+  document.getElementById('g-status').value       = g.status;
+  document.getElementById('g-footer').value       = g.footer;
+  document.getElementById('g-footer-status').value = g.footerStatus;
+
+  // About
+  document.getElementById('ab-p1').value       = ab.p1;
+  document.getElementById('ab-p2').value       = ab.p2;
+  document.getElementById('ab-p3').value       = ab.p3;
+  document.getElementById('ab-p4').value       = ab.p4;
+  document.getElementById('c-name').value      = ab.card.name;
+  document.getElementById('c-age').value       = ab.card.age;
+  document.getElementById('c-location').value  = ab.card.location;
+  document.getElementById('c-primary').value   = ab.card.primary;
+  document.getElementById('c-interests').value = ab.card.interests;
+  document.getElementById('c-mantra').value    = ab.card.mantra;
+
+  renderSkillsAdmin();
+  renderProjectsAdmin();
+
+  // Contact
+  document.getElementById('con-h1').value   = con.h1;
+  document.getElementById('con-h2').value   = con.h2.replace(/<[^>]*>/g, '');
+  document.getElementById('con-note').value = con.note;
+  renderContactLinksAdmin();
+}
+
+function renderSkillsAdmin() {
+  document.getElementById('skills-admin-list').innerHTML = DATA.skills.map((s, i) => `
+    <div class="skill-admin-tag">
+      <span>${s.icon}</span>
+      <input class="form-input" style="width:100px;padding:4px 8px" value="${s.name}" onchange="DATA.skills[${i}].name=this.value">
+      <input class="form-input" style="width:130px;padding:4px 8px" value="${s.sub}"  onchange="DATA.skills[${i}].sub=this.value">
+      <button onclick="DATA.skills.splice(${i},1);renderSkillsAdmin()">✕</button>
+    </div>
+  `).join('');
+}
+
+function addSkill() {
+  const icon = document.getElementById('new-skill-icon').value.trim() || '⚡';
+  const name = document.getElementById('new-skill-name').value.trim();
+  const sub  = document.getElementById('new-skill-sub').value.trim();
+  if (!name) return;
+  DATA.skills.push({ icon, name, sub });
+  document.getElementById('new-skill-icon').value = '';
+  document.getElementById('new-skill-name').value = '';
+  document.getElementById('new-skill-sub').value  = '';
+  renderSkillsAdmin();
+}
+
+function renderProjectsAdmin() {
+  document.getElementById('proj-admin-list').innerHTML = DATA.projects.map((p, i) => `
+    <div class="proj-admin-card">
+      <div class="proj-admin-head">
+        <span class="proj-admin-num">Project ${i + 1}</span>
+        <div class="proj-actions">
+          <button class="icon-btn del" onclick="DATA.projects.splice(${i},1);renderProjectsAdmin()">Delete</button>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Name</label><input class="form-input" value="${p.name}" onchange="DATA.projects[${i}].name=this.value"></div>
+        <div class="form-group"><label class="form-label">Link Label</label><input class="form-input" value="${p.linkLabel}" onchange="DATA.projects[${i}].linkLabel=this.value"></div>
+      </div>
+      <div class="form-group"><label class="form-label">Description</label><textarea class="form-textarea" onchange="DATA.projects[${i}].desc=this.value">${p.desc}</textarea></div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Tags (comma separated)</label><input class="form-input" value="${p.tags}" onchange="DATA.projects[${i}].tags=this.value"></div>
+        <div class="form-group"><label class="form-label">URL</label><input class="form-input" value="${p.link}" onchange="DATA.projects[${i}].link=this.value"></div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function addProject() {
+  DATA.projects.push({ name: "New Project", desc: "Description here.", tags: "tag1, tag2", link: "#", linkLabel: "View ↗" });
+  renderProjectsAdmin();
+}
+
+function renderContactLinksAdmin() {
+  document.getElementById('contact-admin-links').innerHTML = DATA.contact.links.map((l, i) => `
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:8px;margin-bottom:8px;align-items:center">
+      <input class="form-input" value="${l.platform}" placeholder="Platform" onchange="DATA.contact.links[${i}].platform=this.value">
+      <input class="form-input" value="${l.handle}"   placeholder="Handle"   onchange="DATA.contact.links[${i}].handle=this.value">
+      <input class="form-input" value="${l.url}"      placeholder="URL"      onchange="DATA.contact.links[${i}].url=this.value">
+      <button class="icon-btn del" onclick="DATA.contact.links.splice(${i},1);renderContactLinksAdmin()">✕</button>
+    </div>
+  `).join('');
+}
+
+function addContactLink() {
+  DATA.contact.links.push({ platform: "Platform", handle: "handle", url: "#" });
+  renderContactLinksAdmin();
+}
+
+function saveAll() {
+  const encode = s => s.replace(/&/g, '&amp;');
+  DATA.general = {
+    name:         document.getElementById('g-name').value,
+    line1:        encode(document.getElementById('g-line1').value),
+    line2:        document.getElementById('g-line2').value,
+    label:        document.getElementById('g-label').value,
+    sub:          document.getElementById('g-sub').value,
+    age:          document.getElementById('g-age').value,
+    location:     document.getElementById('g-location').value,
+    stack:        document.getElementById('g-stack').value,
+    status:       document.getElementById('g-status').value,
+    footer:       document.getElementById('g-footer').value,
+    footerStatus: document.getElementById('g-footer-status').value
+  };
+  DATA.about = {
+    p1: document.getElementById('ab-p1').value,
+    p2: document.getElementById('ab-p2').value,
+    p3: document.getElementById('ab-p3').value,
+    p4: document.getElementById('ab-p4').value,
+    card: {
+      name:      document.getElementById('c-name').value,
+      age:       document.getElementById('c-age').value,
+      location:  document.getElementById('c-location').value,
+      primary:   document.getElementById('c-primary').value,
+      interests: document.getElementById('c-interests').value,
+      mantra:    document.getElementById('c-mantra').value
     }
+  };
+  const h2raw = document.getElementById('con-h2').value;
+  DATA.contact.h1   = document.getElementById('con-h1').value;
+  DATA.contact.h2   = `Let's <span>${h2raw.replace("Let's ", "").replace(" it.", "")}</span> it.`;
+  DATA.contact.note = document.getElementById('con-note').value;
+
+  saveData(DATA);
+  render();
+
+  const msg = document.getElementById('save-msg');
+  msg.classList.add('show');
+  setTimeout(() => msg.classList.remove('show'), 2500);
+}
+
+// ── FILES ──
+function handleFileUpload(input, type) {
+  const file = input.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    try {
+      localStorage.setItem('atomic_file_' + type, e.target.result);
+      localStorage.setItem('atomic_file_' + type + '_name', file.name);
+      updateFileButtons();
+      updateFilesAdminUI();
+    } catch (err) {
+      alert('File too large to store. Please use a smaller PDF (under 4MB).');
+    }
+  };
+  reader.readAsDataURL(file);
+}
+
+function clearFile(type) {
+  localStorage.removeItem('atomic_file_' + type);
+  localStorage.removeItem('atomic_file_' + type + '_name');
+  updateFileButtons();
+  updateFilesAdminUI();
+}
+
+function updateFileButtons() {
+  ['resume', 'cv'].forEach(function(type) {
+    const data = localStorage.getItem('atomic_file_' + type);
+    const btn  = document.getElementById(type + '-btn');
+    if (!btn) return;
+    if (data) {
+      btn.href = data;
+      btn.style.opacity       = '1';
+      btn.style.pointerEvents = 'auto';
+    } else {
+      btn.href = '#';
+      btn.style.opacity       = '0.35';
+      btn.style.pointerEvents = 'none';
+    }
+  });
+}
+
+function updateFilesAdminUI() {
+  ['resume', 'cv'].forEach(function(type) {
+    const name  = localStorage.getItem('atomic_file_' + type + '_name');
+    const el    = document.getElementById(type + '-filename');
+    const badge = document.getElementById(type + '-badge');
+    if (el)    el.textContent      = name || 'No file uploaded';
+    if (badge) badge.style.display = name ? 'inline' : 'none';
+  });
+}
+
+// ── CURSOR ──
+const cur  = document.getElementById('cur');
+const ring = document.getElementById('cur-ring');
+let mx = 0, my = 0, rx = 0, ry = 0;
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  cur.style.left = mx + 'px'; cur.style.top = my + 'px';
 });
+(function loop() {
+  rx += (mx - rx) * .12;
+  ry += (my - ry) * .12;
+  ring.style.left = rx + 'px';
+  ring.style.top  = ry + 'px';
+  requestAnimationFrame(loop);
+})();
+
+// ── NAV SCROLL ──
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40);
+});
+
+// ── SCROLL REVEAL ──
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// ── INIT ──
+render();
+updateFileButtons();

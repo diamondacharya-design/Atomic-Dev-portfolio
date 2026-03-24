@@ -1,174 +1,311 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Developer Portfolio - 3D Atomic Orbits</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>00_Atomic — Break and Build</title>
+  <link rel="icon" type="image/png" href="Logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="background"></div>
-    <div class="stars" id="stars"></div>
 
-    <div class="container">
-        <header>
-            <h1>ATOMIC DEV</h1>
-            <p class="subtitle">Developer Portfolio</p>
-            <p class="roles">AI Dev • Game Dev • Flutter Full Stack</p>
-            <div class="social-links">
-                <a href="https://github.com/diamondacharya-design?tab=repositories" target="_blank" class="social-btn github-btn">
-                    <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
-                    </svg>
-                    GitHub
-                </a>
-                <a href="https://atomic-dev-123.itch.io/" target="_blank" class="social-btn itchio-btn">
-                    <svg viewBox="0 0 245.371 220.736" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M31.99 1.365C21.287 7.72.2 31.945 0 38.298v10.516C0 62.144 9.732 73.56 23.些 73.56c16.267 0 29.714-13.426 29.714-29.667 0 16.241 13.431 29.667 29.697 29.667 16.267 0 29.697-13.426 29.697-29.667 0 16.241 13.432 29.667 29.699 29.667 16.265 0 29.696-13.426 29.696-29.667 0 16.241 13.432 29.667 29.698 29.667 16.267 0 29.697-13.426 29.697-29.667 0 16.241 13.432 29.667 29.698 29.667 13.271 0 23.003-11.416 23.003-24.746V38.298c-.2-6.354-21.287-30.58-31.988-36.933C240.94.298 105.024-.3 31.99 1.365zm80.786 109.612c-8.682 0-16.594 3.608-22.358 9.362l-.016-.016c-5.665 5.608-14.509 9.313-24.548 9.313H65.85l-.016.016c-9.776.119-18.484 3.782-24.11 9.33v-4.721c0-4.921-3.993-8.914-8.915-8.914-4.921 0-8.914 3.993-8.914 8.914v52.911c0 15.8 12.839 28.639 28.639 28.639h150.252c15.8 0 28.639-12.839 28.639-28.639v-52.91c0-4.921-3.993-8.914-8.915-8.914-4.921 0-8.914 3.993-8.914 8.914v4.721c-5.626-5.548-14.334-9.211-24.11-9.33l-.016-.016h-.004c-10.039 0-18.883-3.705-24.548-9.313l-.016.016c-5.764-5.754-13.676-9.362-22.357-9.362z"/>
-                    </svg>
-                    itch.io
-                </a>
-            </div>
-        </header>
+<div id="cur"></div>
+<div id="cur-ring"></div>
 
-        <div class="atomic-scene">
-            <div class="nucleus" onclick="showPersonalInfo()">
-                ME
-                <div class="nucleus-particles" id="nucleusParticles"></div>
-            </div>
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-inner">
+    <span class="nav-logo" id="nav-logo"><span>00</span>_Atomic</span>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><button class="admin-btn" onclick="openAdmin()">&#9881; Admin</button></li>
+    </ul>
+  </div>
+</nav>
 
-            <div class="orbit-container orbit-1">
-                <div class="orbital-ring"></div>
-                <div class="electron electron-python" onclick="showProjects('Python')">
-                    <svg viewBox="0 0 256 255" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <linearGradient id="pyBlue" x1="0%" y1="0%" x2="0%" y2="100%">
-                                <stop offset="0%" style="stop-color:#387EB8;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#366994;stop-opacity:1" />
-                            </linearGradient>
-                            <linearGradient id="pyYellow" x1="0%" y1="0%" x2="0%" y2="100%">
-                                <stop offset="0%" style="stop-color:#FFE873;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#FFD43B;stop-opacity:1" />
-                            </linearGradient>
-                        </defs>
-                        <path d="M126.916.072c-64.832 0-60.784 28.115-60.784 28.115l.072 29.128h61.868v8.745H41.631S.145 61.355.145 126.77c0 65.417 36.21 63.097 36.21 63.097h21.61v-30.356s-1.165-36.21 35.632-36.21h61.362s34.475.557 34.475-33.319V33.97S194.67.072 126.916.072zM92.802 19.66a11.12 11.12 0 0 1 11.13 11.13 11.12 11.12 0 0 1-11.13 11.13 11.12 11.12 0 0 1-11.13-11.13 11.12 11.12 0 0 1 11.13-11.13z" fill="url(#pyBlue)"/>
-                        <path d="M128.757 254.126c64.832 0 60.784-28.115 60.784-28.115l-.072-29.127H127.6v-8.745h86.441s41.486 4.705 41.486-60.712c0-65.416-36.21-63.096-36.21-63.096h-21.61v30.355s1.165 36.21-35.632 36.21h-61.362s-34.475-.557-34.475 33.32v56.013s-5.235 33.897 62.518 33.897zm34.114-19.586a11.12 11.12 0 0 1-11.13-11.13 11.12 11.12 0 0 1 11.13-11.131 11.12 11.12 0 0 1 11.13 11.13 11.12 11.12 0 0 1-11.13 11.13z" fill="url(#pyYellow)"/>
-                    </svg>
-                </div>
-            </div>
-            <div class="orbit-container orbit-2">
-                <div class="orbital-ring"></div>
-                <div class="electron electron-flutter" onclick="showProjects('Flutter')">
-                    <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <polygon points="100,20 20,100 50,130 130,50" fill="#47C5FB"/>
-                        <polygon points="100,90 50,140 80,170 130,120" fill="#00B5F8"/>
-                        <polygon points="80,170 100,150 120,170 100,190" fill="#00569E"/>
-                    </svg>
-                </div>
-            </div>
-            <div class="orbit-container orbit-3">
-                <div class="orbital-ring"></div>
-                <div class="electron electron-html" onclick="showProjects('HTML')">
-                    <svg viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M108.4 0h23v22.8h21.2V0h23v69h-23V46h-21.1v23h-23.1V0zM206 22.9h-20.3V0h63.7v22.9h-20.3V69H206V22.9zM259.5 0h24l14.9 24.3L313.2 0h24v69h-23V34.8l-15.8 24.6h-.4l-15.8-24.6V69h-22.7V0zM348.7 0h23v46.2h32.6V69h-55.6V0z" fill="#E34F26"/>
-                        <path d="M107.6 471l-33-370.4h362.8l-33 370.2L255.7 512" fill="#E34F26"/>
-                        <path d="M256 480.5V131H404.3L376 447" fill="#F06529"/>
-                        <path d="M142 176.3h114v45.4h-64.2l4.2 46.5h60v45.3H154.4M156.4 336.3H202l3.2 36.3 50.8 13.6v47.4l-93.2-26" fill="#EBEBEB"/>
-                        <path d="M369.6 176.3H255.8v45.4h109.6M361.3 268.2H255.8v45.4h56l-5.3 59-50.7 13.6v47.2l93-25.8" fill="#FFF"/>
-                    </svg>
-                </div>
-            </div>
-            <div class="orbit-container orbit-4">
-                <div class="orbital-ring"></div>
-                <div class="electron electron-css" onclick="showProjects('CSS')">
-                    <svg viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M108.4 0h23v22.8h21.2V0h23v69h-23V46h-21.1v23h-23.1V0zM206 22.9h-20.3V0h63.7v22.9h-20.3V69H206V22.9zM259.5 0h24l14.9 24.3L313.2 0h24v69h-23V34.8l-15.8 24.6h-.4l-15.8-24.6V69h-22.7V0zM348.7 0h23v46.2h32.6V69h-55.6V0z" fill="#1572B6"/>
-                        <path d="M107.6 471l-33-370.4h362.8l-33 370.2L255.7 512" fill="#1572B6"/>
-                        <path d="M256 480.5V131H404.3L376 447" fill="#33A9DC"/>
-                        <path d="M142 176.3h114v45.4h-64.2l4.2 46.5h60v45.3H154.4M156.4 336.3H202l3.2 36.3 50.8 13.6v47.4l-93.2-26" fill="#EBEBEB"/>
-                        <path d="M369.6 176.3H255.8v45.4h109.6M361.3 268.2H255.8v45.4h56l-5.3 59-50.7 13.6v47.2l93-25.8" fill="#FFF"/>
-                    </svg>
-                </div>
-            </div>
-        </div>
+<!-- HERO -->
+<div class="hero">
+  <p class="hero-label" id="hero-label">Developer · Nepal 🇳🇵</p>
+  <h1 class="hero-title">
+    <span class="line"><span id="hero-line1">Break &amp;</span></span>
+    <span class="line"><span id="hero-line2">Build.</span></span>
+  </h1>
+  <p class="hero-sub" id="hero-sub"></p>
+  <div class="hero-meta" id="hero-meta"></div>
+  <div class="hero-cta">
+    <a href="https://github.com/diamondacharya-design" target="_blank" class="btn btn-fill">View Projects &#8595;</a>
+    <a href="https://www.linkedin.com/in/diamond-acharya-9536063b9/" target="_blank" class="btn btn-ghost">Say Hello &#8594;</a>
+    <a id="resume-btn" href="#" target="_blank" class="btn btn-ghost">Resume &#8599;</a>
+    <a id="cv-btn" href="#" target="_blank" class="btn btn-ghost">CV &#8599;</a>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div class="wrap">
+  <div class="section reveal" id="about">
+    <div class="section-head">
+      <span class="section-num">01</span>
+      <h2 class="section-title">About Me</h2>
     </div>
-    <div class="modal" id="personalModal">
-        <div class="modal-content" style="--modal-glow: #00ffff;">
-            <div class="modal-close" onclick="closeModal('personalModal')">×</div>
-            <h2>About Me</h2>
-            
-            <div class="modal-social-links">
-                <a href="https://github.com/diamondacharya-design?tab=repositories" target="_blank" class="social-btn github-btn">
-                    <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
-                    </svg>
-                    GitHub Repos
-                </a>
-                <a href="https://atomic-dev-123.itch.io/" target="_blank" class="social-btn itchio-btn">
-                    <svg viewBox="0 0 245.371 220.736" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M31.99 1.365C21.287 7.72.2 31.945 0 38.298v10.516C0 62.144 9.732 73.56 23.些 73.56c16.267 0 29.714-13.426 29.714-29.667 0 16.241 13.431 29.667 29.697 29.667 16.267 0 29.697-13.426 29.697-29.667 0 16.241 13.432 29.667 29.699 29.667 16.265 0 29.696-13.426 29.696-29.667 0 16.241 13.432 29.667 29.698 29.667 16.267 0 29.697-13.426 29.697-29.667 0 16.241 13.432 29.667 29.698 29.667 13.271 0 23.003-11.416 23.003-24.746V38.298c-.2-6.354-21.287-30.58-31.988-36.933C240.94.298 105.024-.3 31.99 1.365zm80.786 109.612c-8.682 0-16.594 3.608-22.358 9.362l-.016-.016c-5.665 5.608-14.509 9.313-24.548 9.313H65.85l-.016.016c-9.776.119-18.484 3.782-24.11 9.33v-4.721c0-4.921-3.993-8.914-8.915-8.914-4.921 0-8.914 3.993-8.914 8.914v52.911c0 15.8 12.839 28.639 28.639 28.639h150.252c15.8 0 28.639-12.839 28.639-28.639v-52.91c0-4.921-3.993-8.914-8.915-8.914-4.921 0-8.914 3.993-8.914 8.914v4.721c-5.626-5.548-14.334-9.211-24.11-9.33l-.016-.016h-.004c-10.039 0-18.883-3.705-24.548-9.313l-.016.016c-5.764-5.754-13.676-9.362-22.357-9.362z"/>
-                    </svg>
-                    itch.io Profile
-                </a>
-            </div>
-
-            <h3>Who Am I</h3>
-            <ul>
-                <li><strong>18-year-old self-taught developer</strong> from Nepal</li>
-                <li>Currently studying at <strong>Deer Walk Sifal School</strong></li>
-                <li>Learned everything through online resources, documentation, and hands-on projects</li>
-                <li>Passionate about AI, game development, and full-stack applications</li>
-            </ul>
-
-            <h3>Learning Path</h3>
-            <ul>
-                <li><strong>Python</strong> - First language, started with basics and moved into games and AI</li>
-                <li><strong>Pygame</strong> - Built Pirate Maker 2D to understand game mechanics</li>
-                <li><strong>AI/ML</strong> - Explored transformers and LLMs out of pure curiosity</li>
-                <li><strong>Flutter</strong> - Built Jet Punk, a cross-platform social media app</li>
-                <li><strong>Web Dev</strong> - Self-taught HTML, CSS, and JavaScript for frontend</li>
-            </ul>
-
-            <h3>Projects</h3>
-            <ul>
-                <li>Built complete games, web apps, and AI models</li>
-                <li>Jet Punk - full-featured social media platform (biggest project)</li>
-                <li>Chessed It - complete chess platform with multiplayer</li>
-                <li>Pirate Maker 2D - level editor and platformer with Pygame</li>
-            </ul>
-
-            <h3>Current Focus</h3>
-            <ul>
-                <li><strong>AI:</strong> LLMs, transformers, and modern AI architectures</li>
-                <li><strong>Game Dev:</strong> 2D games with Python and Pygame</li>
-                <li><strong>Flutter:</strong> Cross-platform mobile applications</li>
-                <li><strong>Web:</strong> Responsive, modern interfaces</li>
-            </ul>
-        </div>
+    <div class="about-grid">
+      <div class="about-text" id="about-text"></div>
+      <div class="about-card" id="about-card"></div>
     </div>
-    <div class="modal" id="projectsModal">
-        <div class="projects-terminal">
-            <div class="terminal-header">
-                <div class="terminal-controls">
-                    <span class="terminal-btn close" onclick="closeModal('projectsModal')"></span>
-                    <span class="terminal-btn minimize"></span>
-                    <span class="terminal-btn maximize"></span>
-                </div>
-                <div class="terminal-title">
-                    <span class="glitch-text" id="terminalTitle">PROJECTS_DATABASE</span>
-                </div>
-            </div>
-            <div class="terminal-body">
-                <div class="scan-line"></div>
-                <div id="projectsList"></div>
-                <div id="projectDetail" class="project-detail-view" style="display: none;">
-                    <button class="back-btn" onclick="backToProjects()">← BACK</button>
-                    <div id="projectDetailContent"></div>
-                </div>
-            </div>
-        </div>
+  </div>
+
+  <!-- SKILLS -->
+  <div class="section" id="skills">
+    <div class="section-head reveal">
+      <span class="section-num">02</span>
+      <h2 class="section-title">Skills</h2>
+    </div>
+    <div class="skills-grid" id="skills-grid"></div>
+  </div>
+
+  <!-- PROJECTS -->
+  <div class="section" id="projects">
+    <div class="section-head reveal">
+      <span class="section-num">03</span>
+      <h2 class="section-title">Projects</h2>
+    </div>
+    <div class="projects-list" id="projects-list"></div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="section" id="contact">
+    <div class="section-head reveal">
+      <span class="section-num">04</span>
+      <h2 class="section-title">Contact</h2>
+    </div>
+    <div class="contact-grid">
+      <div class="reveal">
+        <div class="contact-headline" id="contact-headline"></div>
+        <p class="contact-note" id="contact-note"></p>
+      </div>
+      <div class="contact-links reveal d2" id="contact-links"></div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span id="footer-copy"></span>
+  <span class="f-status"><span class="f-dot"></span><span id="footer-status"></span></span>
+</footer>
+
+<!-- ADMIN OVERLAY -->
+<div id="admin-overlay">
+
+  <!-- Login -->
+  <div id="login-box">
+    <div class="login-title">Admin Access</div>
+    <div class="login-sub">00_ATOMIC · PORTFOLIO CMS</div>
+    <label class="field-label">Password</label>
+    <input class="field-input" type="password" id="pw-input" placeholder="Enter password" onkeydown="if(event.key==='Enter')doLogin()">
+    <div class="login-err" id="login-err"></div>
+    <div class="login-actions">
+      <button class="a-btn a-btn-primary" onclick="doLogin()">Enter &#8594;</button>
+      <button class="a-btn a-btn-ghost" onclick="closeAdmin()">Cancel</button>
+    </div>
+  </div>
+
+  <!-- Panel -->
+  <div id="admin-panel" style="display:none">
+    <div class="panel-header">
+      <div class="panel-title">Admin Panel <span>00_ATOMIC CMS</span></div>
+      <button class="panel-close" onclick="closeAdmin()">&#x2715;</button>
     </div>
 
-    <script src="script.js"></script>
+    <div class="panel-tabs">
+      <button class="tab active" onclick="switchTab('general',this)">General</button>
+      <button class="tab" onclick="switchTab('about',this)">About</button>
+      <button class="tab" onclick="switchTab('skills',this)">Skills</button>
+      <button class="tab" onclick="switchTab('projects',this)">Projects</button>
+      <button class="tab" onclick="switchTab('contact',this)">Contact</button>
+      <button class="tab" onclick="switchTab('files',this)">Files</button>
+    </div>
+
+    <div class="panel-body">
+
+      <!-- GENERAL -->
+      <div class="tab-pane active" id="tab-general">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Your Name / Handle</label>
+            <input class="form-input" id="g-name" placeholder="00_Atomic">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Tagline Line 1</label>
+            <input class="form-input" id="g-line1" placeholder="Break &">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Tagline Line 2</label>
+            <input class="form-input" id="g-line2" placeholder="Build.">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Hero Label</label>
+            <input class="form-input" id="g-label" placeholder="Developer · Nepal 🇳🇵">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Hero Sub Text</label>
+          <textarea class="form-textarea" id="g-sub"></textarea>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Meta: Age</label>
+            <input class="form-input" id="g-age" placeholder="17">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Meta: Location</label>
+            <input class="form-input" id="g-location" placeholder="Kathmandu, NP">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Meta: Stack</label>
+            <input class="form-input" id="g-stack" placeholder="Python · Flutter">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Meta: Status</label>
+            <input class="form-input" id="g-status" placeholder="● Building">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Footer Text</label>
+            <input class="form-input" id="g-footer" placeholder="© 2026 · 00_Atomic · Break and Build">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Footer Status</label>
+            <input class="form-input" id="g-footer-status" placeholder="Open to collabs">
+          </div>
+        </div>
+      </div>
+
+      <!-- ABOUT -->
+      <div class="tab-pane" id="tab-about">
+        <div class="form-group">
+          <label class="form-label">About Paragraph 1</label>
+          <textarea class="form-textarea" id="ab-p1"></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label">About Paragraph 2</label>
+          <textarea class="form-textarea" id="ab-p2"></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label">About Paragraph 3</label>
+          <textarea class="form-textarea" id="ab-p3"></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label">About Paragraph 4</label>
+          <textarea class="form-textarea" id="ab-p4"></textarea>
+        </div>
+        <hr style="border-color:#202022;margin:24px 0">
+        <div style="font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:#4a4845;margin-bottom:16px">Info Card</div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">Name</label><input class="form-input" id="c-name"></div>
+          <div class="form-group"><label class="form-label">Age</label><input class="form-input" id="c-age"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">Location</label><input class="form-input" id="c-location"></div>
+          <div class="form-group"><label class="form-label">Primary Stack</label><input class="form-input" id="c-primary"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">Interests</label><input class="form-input" id="c-interests"></div>
+          <div class="form-group"><label class="form-label">Mantra</label><input class="form-input" id="c-mantra"></div>
+        </div>
+      </div>
+
+      <!-- SKILLS -->
+      <div class="tab-pane" id="tab-skills">
+        <div id="skills-admin-list" class="skills-admin-list"></div>
+        <div class="add-skill-row" style="margin-top:16px">
+          <input class="form-input" id="new-skill-icon" placeholder="Icon (emoji)" style="width:80px;flex-shrink:0">
+          <input class="form-input" id="new-skill-name" placeholder="Skill name">
+          <input class="form-input" id="new-skill-sub"  placeholder="Subtitle (e.g. Core Language)">
+          <button class="a-btn a-btn-primary" style="flex-shrink:0;white-space:nowrap" onclick="addSkill()">+ Add</button>
+        </div>
+      </div>
+
+      <!-- PROJECTS -->
+      <div class="tab-pane" id="tab-projects">
+        <div id="proj-admin-list" class="proj-admin-list"></div>
+        <button class="a-btn a-btn-ghost" style="width:100%;margin-top:16px" onclick="addProject()">+ Add Project</button>
+      </div>
+
+      <!-- CONTACT -->
+      <div class="tab-pane" id="tab-contact">
+        <div class="form-group">
+          <label class="form-label">Headline Line 1</label>
+          <input class="form-input" id="con-h1" placeholder="Got an idea?">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Headline Line 2</label>
+          <input class="form-input" id="con-h2" placeholder="Let's build it.">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Note Text</label>
+          <textarea class="form-textarea" id="con-note"></textarea>
+        </div>
+        <hr style="border-color:#202022;margin:24px 0">
+        <div style="font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:#4a4845;margin-bottom:16px">Links</div>
+        <div id="contact-admin-links"></div>
+        <button class="a-btn a-btn-ghost" style="width:100%;margin-top:12px" onclick="addContactLink()">+ Add Link</button>
+      </div>
+
+      <!-- FILES -->
+      <div class="tab-pane" id="tab-files">
+        <div style="margin-bottom:28px">
+          <div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#4a4845;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid #202022">Resume File</div>
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px">
+            <span style="font-size:12px;color:#d4cfc7" id="resume-filename">No file uploaded</span>
+            <span id="resume-badge" style="font-size:10px;letter-spacing:.15em;padding:3px 8px;border:1px solid #4ade80;color:#4ade80;display:none">ACTIVE</span>
+          </div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <label class="a-btn a-btn-primary" style="cursor:none;display:inline-flex;align-items:center;gap:8px">
+              Upload Resume PDF
+              <input type="file" accept=".pdf" id="resume-upload" style="display:none" onchange="handleFileUpload(this,'resume')">
+            </label>
+            <button class="a-btn a-btn-ghost" onclick="clearFile('resume')">Clear</button>
+          </div>
+          <div style="font-size:11px;color:#4a4845;margin-top:10px">Stored in your browser. Max ~4MB recommended.</div>
+        </div>
+        <div>
+          <div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#4a4845;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid #202022">CV File</div>
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px">
+            <span style="font-size:12px;color:#d4cfc7" id="cv-filename">No file uploaded</span>
+            <span id="cv-badge" style="font-size:10px;letter-spacing:.15em;padding:3px 8px;border:1px solid #4ade80;color:#4ade80;display:none">ACTIVE</span>
+          </div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <label class="a-btn a-btn-primary" style="cursor:none;display:inline-flex;align-items:center;gap:8px">
+              Upload CV PDF
+              <input type="file" accept=".pdf" id="cv-upload" style="display:none" onchange="handleFileUpload(this,'cv')">
+            </label>
+            <button class="a-btn a-btn-ghost" onclick="clearFile('cv')">Clear</button>
+          </div>
+          <div style="font-size:11px;color:#4a4845;margin-top:10px">Stored in your browser. Max ~4MB recommended.</div>
+        </div>
+      </div>
+
+    </div><!-- end panel-body -->
+
+    <div class="save-bar">
+      <span class="save-msg" id="save-msg">&#x2713; Saved successfully</span>
+      <div style="display:flex;gap:10px">
+        <button class="a-btn a-btn-ghost" onclick="closeAdmin()">Close</button>
+        <button class="a-btn a-btn-primary" onclick="saveAll()">Save Changes &#8594;</button>
+      </div>
+    </div>
+  </div><!-- end admin-panel -->
+
+</div><!-- end admin-overlay -->
+
+<script src="script.js"></script>
 </body>
 </html>
